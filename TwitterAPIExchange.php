@@ -274,13 +274,13 @@ class TwitterAPIExchange
         $getfield = $this->getGetfield();
         $postfields = $this->getPostfields();
 
-        $options = array(
+        $options = array_replace(array(
             CURLOPT_HTTPHEADER => $header,
             CURLOPT_HEADER => false,
             CURLOPT_URL => $this->url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 10,
-        ) + $curlOptions;
+        ), $curlOptions);
 
         if (!is_null($postfields))
         {
